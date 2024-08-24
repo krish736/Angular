@@ -1,0 +1,34 @@
+<h1>Angular</h1>
+<app-navbar></app-navbar>
+<app-header></app-header>
+
+
+<button disabled="{{isDisabled}}">String Interpolation</button>
+<button [disabled]="isDisabled">Property Binding</button>
+<br>
+<br>
+<input type="text" (keyup.enter)="keyupFiltering(user)" #user>
+<br>
+<br>
+<input type="text" [(ngModel)]="userName">
+
+<h3>{{userName}}</h3>
+
+<ng-template #para>
+    <p>para</p>
+</ng-template>
+
+@if(true){
+   <div [ngTemplateOutlet] ='para'></div>
+}
+
+<ul>
+    @for(user of users; track user; let i = $index; let totalCount = $count){
+        <li>{{user}} <button (click)="deleteUser(i)">delete</button></li>    
+    }
+    @empty {
+        <p>no user to display</p>
+    }
+</ul>
+
+<button (click)="addUser()">add user</button>
